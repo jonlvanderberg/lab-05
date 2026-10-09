@@ -154,14 +154,20 @@ fun CityListScreen(
                 ) {
                     Text("UPDATE CITY")
                 }
-                Button(
-                    modifier = Modifier.padding(vertical = 12.dp),
-                    onClick ={
-                        //////////////////////////////////////////////////////////////////////////////////////
+            }
+            Button(
+                modifier = Modifier.padding(vertical = 12.dp),
+                onClick ={
+                    val cityToDelete = selectedCity
+                    if (cityToDelete != null) {
+                        onDeleteCity(cityToDelete)
                     }
-                ){
-                    Text("DELETE CITY")
+                    selectedCity = null
+                    editedCityName = ""
+                    editedProvinceName = ""
                 }
+            ){
+                Text("DELETE CITY")
             }
         }
         LazyColumn(modifier = Modifier.fillMaxSize()) {

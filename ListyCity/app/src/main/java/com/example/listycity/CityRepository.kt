@@ -38,17 +38,16 @@ class CityRepository {
 
     fun updateCity(oldCity: City, updatedCity: City) {
         citiesRef.document(oldCity.name).set(updatedCity)
-
-
-
-
-        /*val index = _cities.indexOf(oldCity)
-        if (index != -1) {
-            _cities[index] = updatedCity
-        }*/
     }
 
     fun deleteCity(selected: City){
-        citiesRef.document(selected.name).delete()
+        citiesRef
+            .whereEqualTo("name", selected.name)
+            .whereEqualTo("province", selected.province)
+            .get()
+            .addOnSuccessListener { snapshot ->
+                snapshot.documents.forEach { doc -> doc.reference.delete() }
+            }
+        //citiesRef.document(selected.name).delete() doesnt work because ID is not same as name
     }
 }
