@@ -2,8 +2,8 @@
 
 ## Student Details
 
-- **Full Name:** `<Enter name>`
-- **CCID:** `<Enter ccid>`
+- **Full Name:** `Jonathan van der Berg`
+- **CCID:** `jlvander`
 
 ## References and Resources
 
